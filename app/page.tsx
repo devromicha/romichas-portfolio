@@ -1,10 +1,28 @@
+import About from "@/component/About";
+import Hero from "@/component/Hero";
 import Navbar from "@/component/Navbar";
-import Image from "next/image";
+
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-    <Navbar/>
-    </div>
+    /* We remove bg-zinc-50 so the globals.css star background is visible */
+    <main className="relative min-h-screen w-full flex flex-col items-center">
+      
+      {/* 1. Navigation */}
+      <Navbar />
+
+      {/* 2. Content Sections */}
+      <div className="w-full max-w-7xl px-4 md:px-8 flex flex-col gap-32">
+        
+        <Hero />
+        <About />
+      
+      </div>
+
+      {/* 3. Subtle Nebula Glows (Optional, for that Screenshot look) */}
+      <div className="fixed top-[-10%] left-[-10%] w-[400px] h-[400px] rounded-full bg-purple-600/10 blur-[120px] pointer-events-none z-0" />
+      <div className="fixed bottom-0 right-[-5%] w-[300px] h-[300px] rounded-full bg-blue-600/10 blur-[100px] pointer-events-none z-0" />
+      
+    </main>
   );
 }

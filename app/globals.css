@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Deep Space Palette */
+  --background: #030014; 
+  --foreground: #ededed;
+  --star-color: rgba(255, 255, 255, 0.8);
 }
 
 @theme inline {
@@ -12,15 +14,38 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  /* This creates a subtle stars effect using gradients */
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 80px 120px, var(--star-color), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 110px 210px, var(--star-color), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px; /* Adjust this to change star density */
+  background-attachment: fixed; /* Keep stars still while you scroll */
+}
+
+/* Your Custom Cursor Styles */
+* { cursor: none; }
+
+.cursor-ring {
+  position: fixed; width: 36px; height: 36px;
+  border: 1.5px solid #c8f135; border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .25s, height .25s, background .2s;
+}
+
+.cursor-dot {
+  position: fixed; width: 5px; height: 5px;
+  background: #c8f135; border-radius: 50%;
+  pointer-events: none; z-index: 10000;
+  transform: translate(-50%, -50%);
 }
