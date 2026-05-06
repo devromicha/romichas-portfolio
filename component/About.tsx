@@ -51,30 +51,42 @@ export default function About() {
           <div className="flex-shrink-0 flex flex-col items-center gap-8">
 
             {/* Photo with ring */}
-            <div className="relative w-[240px] h-[240px] md:w-[280px] md:h-[280px]">
-              {/* Spinning dashed border */}
-              <div
-                className="absolute inset-0 rounded-full border-2 border-dashed border-[#c8f135]/25 animate-spin"
-                style={{ animationDuration: '12s' }}
-              />
-              {/* Gradient ring */}
-              <div className="absolute inset-[8px] rounded-full p-[3px] bg-gradient-to-br from-[#c8f135] via-[#7c3aed] to-[#c8f135]">
-                <div className="w-full h-full rounded-full bg-[#0e0e0e]" />
-              </div>
-              {/* Photo */}
-              <div className="absolute inset-[11px] rounded-full overflow-hidden bg-[#161616]">
-                {/*
-                  Replace with your image:
-                  <Image src="/profile.jpg" alt="Romicha" fill className="object-cover" />
-                */}
-                <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#111] flex items-center justify-center">
-                  <span className="text-white/10 text-xs font-mono">YOUR PHOTO</span>
-                </div>
-              </div>
+           <div className="relative w-[240px] h-[240px] md:w-[280px] md:h-[280px] group transition-all duration-500">
+  
+  {/* Spinning dashed border */}
+  <div
+    className="absolute inset-0 rounded-full border-2 border-dashed border-[#c8f135]/25 animate-spin"
+    style={{ animationDuration: '12s' }}
+  />
 
-              {/* Glow dot */}
-              <div className="absolute top-2 right-4 w-3 h-3 rounded-full bg-[#c8f135] animate-pulse shadow-[0_0_10px_#c8f135]" />
-            </div>
+  {/* Gradient ring */}
+  <div className="absolute inset-[8px] rounded-full p-[3px] bg-gradient-to-r from-[#c8f135] via-green-400 to-[#00e5ff]">
+    <div className="w-full h-full rounded-full bg-[#0e0e0e]" />
+  </div>
+
+  {/* Photo container */}
+  <div className="absolute inset-[11px] rounded-full overflow-hidden bg-[#161616]">
+    
+    <div className="relative w-full h-full group overflow-hidden rounded-full">
+      
+      <Image
+        src="/romicha.png"
+        alt="Romicha"
+        fill
+        className="object-cover transition-all duration-700 group-hover:scale-110"
+      />
+
+      {/* soft overlay for premium look */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40" />
+    </div>
+  </div>
+
+  {/* Glow dot */}
+  <div className="absolute top-2 right-4 w-3 h-3 rounded-full bg-[#c8f135] animate-pulse shadow-[0_0_15px_#c8f135]" />
+
+  {/* outer glow on hover */}
+  <div className="absolute inset-0 rounded-full transition-all duration-500 group-hover:shadow-[0_0_40px_rgba(200,241,53,0.25)]" />
+</div>
 
             {/* ── Stats row ── */}
             <div className="flex gap-6">
@@ -92,7 +104,7 @@ export default function About() {
 
             {/* Greeting line */}
             <p className="text-[#c8f135] font-mono text-sm tracking-widest uppercase">
-              // who I am
+               who I am
             </p>
 
             {/* Main paragraph */}

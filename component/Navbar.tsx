@@ -80,22 +80,21 @@ export default function Navbar() {
       <nav
         className={`
           fixed z-50 flex items-center justify-between
-          transition-all duration-500 ease-in-out
+          transition-all duration-500 ease-in-out  w-[90%] max-w-7xl mx-auto
           ${
             scrolled
-              ? 'top-4 left-1/2 -translate-x-1/2 w-[90%] max-w-3xl px-6 h-[56px] rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(200,241,53,0.08)]'
+              ? 'top-4 left-1/2 -translate-x-1/2 px-6 h-[56px] rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(200,241,53,0.08)]'
               : 'top-0 left-0 right-0 w-full px-6 md:px-10 h-[68px] bg-transparent border-b border-transparent'
           }
         `}
       >
         {/* Logo */}
         <button onClick={() => scrollTo('home')} className="flex items-center gap-0">
-          <span className="font-syne text-xl font-extrabold tracking-tight text-[#c8f135]">
-            Romi
-          </span>
-          <span className="font-syne text-xl font-extrabold tracking-tight text-[#7c3aed]">
-            cha
-          </span>
+      <span className="font-syne text-xl font-extrabold tracking-tight 
+bg-gradient-to-r from-[#c8f135] via-green-400 to-[#00e5ff] 
+bg-clip-text text-transparent">
+  Romicha
+</span>
           <span className="font-syne text-xl font-extrabold text-[#c8f135]">.</span>
         </button>
 
@@ -124,12 +123,14 @@ export default function Navbar() {
         </ul>
 
         {/* Hire Me Button */}
-        <button
-          onClick={() => scrollTo('contact')}
-          className="hidden md:block text-[0.7rem] font-syne font-bold tracking-widest uppercase px-5 py-2 rounded-full bg-gradient-to-r from-[#c8f135] to-[#7c3aed] text-black transition-transform hover:scale-105"
-        >
-          Hire Me
-        </button>
+       <button
+  onClick={() => scrollTo('contact')}
+  className="hidden md:block text-[0.7rem] font-syne font-bold tracking-widest uppercase px-5 py-2 rounded-full 
+  bg-gradient-to-r from-[#c8f135] to-[#00e5ff] text-black 
+  transition-all duration-300 hover:scale-105 hover:brightness-110"
+>
+  Hire Me
+</button>
 
         {/* Mobile toggle */}
         <button

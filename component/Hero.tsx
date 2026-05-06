@@ -5,11 +5,11 @@ import Image from 'next/image'
 const roles = ['Frontend Developer.', 'MERN Stack Developer.']
 
 export default function Hero() {
-  const [displayed, setDisplayed] = useState('')
   const [roleIndex, setRoleIndex] = useState(0)
   const [charIndex, setCharIndex] = useState(0)
   const [deleting, setDeleting] = useState(false)
   const [showCursor, setShowCursor] = useState(true)
+  const displayed = roles[roleIndex].slice(0, charIndex)
 
   // Typewriter
   useEffect(() => {
@@ -23,11 +23,12 @@ export default function Hero() {
     } else if (deleting && charIndex > 0) {
       timeout = setTimeout(() => setCharIndex((c) => c - 1), 45)
     } else if (deleting && charIndex === 0) {
-      setDeleting(false)
-      setRoleIndex((i) => (i + 1) % roles.length)
+      timeout = setTimeout(() => {
+        setDeleting(false)
+        setRoleIndex((i) => (i + 1) % roles.length)
+      }, 0)
     }
 
-    setDisplayed(currentRole.slice(0, charIndex))
     return () => clearTimeout(timeout)
   }, [charIndex, deleting, roleIndex])
 
@@ -64,9 +65,9 @@ export default function Hero() {
           </p>
 
           {/* Name */}
-          <h1 className="font-syne text-5xl md:text-7xl font-extrabold tracking-tight leading-none mb-5 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <span className="text-white">Romi</span>
-            <span className="text-[#c8f135]">cha</span>
+          <h1 className="font-syne text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-[#c8f135] via-green-400 to-[#00e5ff] 
+bg-clip-text text-transparent tracking-tight leading-none mb-5 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+      Romicha
           </h1>
 
           {/* Typewriter role */}
@@ -100,12 +101,16 @@ export default function Hero() {
               Download Resume
             </button>
 
-            <button
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 py-3 rounded-md border border-[#c8f135]/40 text-[#c8f135] font-syne font-bold text-sm tracking-wide hover:bg-[#c8f135]/10 hover:border-[#c8f135] transition-all duration-300"
-            >
-              Get In Touch
-            </button>
+           <button
+    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+    className="px-6 py-3 rounded-md 
+    bg-white/5 backdrop-blur-md border border-[#c8f135]/40 
+    text-[#c8f135] font-syne font-bold text-sm tracking-wide 
+    hover:bg-[#c8f135]/10 hover:border-[#c8f135] 
+    transition-all duration-300 shadow-md"
+  >
+    Get In Touch
+  </button>
           </div>
 
           {/* Social Icons */}
@@ -144,7 +149,7 @@ export default function Hero() {
           <div className="relative w-[260px] h-[260px] md:w-[340px] md:h-[340px]">
 
             {/* Outer gradient ring */}
-            <div className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-br from-[#c8f135] via-[#7c3aed] to-[#c8f135]">
+            <div className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-r from-[#c8f135] via-green-400 to-[#00e5ff]">
               <div className="w-full h-full rounded-full bg-[#0e0e0e]" />
             </div>
 
@@ -152,11 +157,11 @@ export default function Hero() {
             <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-[#c8f135]/20 to-[#7c3aed]/20 blur-md animate-pulse" style={{ animationDuration: '3s' }} />
 
             {/* Photo area — replace with your <Image /> */}
-            <div className="absolute inset-[4px] rounded-full overflow-hidden bg-[#161616] flex items-center justify-center">
-              {/*
-                Replace the div below with your actual image:
-                <Image src="/profile.jpg" alt="Romicha" fill className="object-cover" />
-              */}
+            <div className="absolute inset-[4px] rounded-full overflow-hidden bg-[#161616] flex items-center justify-center group">
+              
+               
+                <Image src="/romicha.png" alt="Romicha" fill     className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl"/>
+             
               <div className="w-full h-full bg-gradient-to-br from-[#1c1c1c] to-[#111] flex items-center justify-center">
                 <span className="text-white/15 text-xs font-mono tracking-widest">YOUR PHOTO</span>
               </div>
