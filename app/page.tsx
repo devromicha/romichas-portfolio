@@ -10,13 +10,13 @@ import Skills from "@/component/Skills";
 
 export default function Home() {
   return (
-    /* We remove bg-zinc-50 so the globals.css star background is visible */
+
     <main className="relative min-h-screen w-full flex flex-col items-center">
       
-      {/* 1. Navigation */}
+
       <Navbar />
 
-      {/* 2. Content Sections */}
+   
       <div className="w-full max-w-7xl px-4 md:px-8 flex flex-col gap-32">
         
         <Hero />

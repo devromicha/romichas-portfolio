@@ -153,17 +153,7 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* Hire Me Button */}
-        {/* <button
-          onClick={() => scrollTo('contact')}
-          className="hidden md:block text-[0.7rem] font-syne font-bold tracking-widest uppercase px-5 py-2 rounded-full
-          bg-gradient-to-r from-[#7c3aed] to-[#9f67ff] text-white
-          transition-all duration-300 hover:scale-105 hover:brightness-110"
-        >
-          Hire Me
-        </button> */}
-
-        {/* Mobile toggle */}
+    
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden text-white text-2xl"

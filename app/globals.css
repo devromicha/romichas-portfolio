@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Deep Space Palette */
+
   --background: #030014; 
   --foreground: #ededed;
   --star-color: rgba(255, 255, 255, 0.8);
