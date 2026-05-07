@@ -33,7 +33,63 @@ body {
 }
 
 /* Your Custom Cursor Styles */
-* { cursor: none; }
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+
+  border: 1.5px solid #7c3aed;
+  border-radius: 50%;
+
+  pointer-events: none;
+  z-index: 9999;
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    width 0.25s ease,
+    height 0.25s ease,
+    border 0.25s ease,
+    background 0.25s ease;
+
+  box-shadow:
+    0 0 12px rgba(124, 58, 237, 0.35);
+
+  background: rgba(124, 58, 237, 0.03);
+
+  backdrop-filter: blur(2px);
+}
+
+.cursor-dot {
+  position: fixed;
+
+  width: 5px;
+  height: 5px;
+
+  background: #7c3aed;
+  border-radius: 50%;
+
+  pointer-events: none;
+  z-index: 10000;
+
+  transform: translate(-50%, -50%);
+
+  box-shadow:
+    0 0 10px rgba(124, 58, 237, 0.7),
+    0 0 18px rgba(124, 58, 237, 0.35);
+}
+
+/* Hover */
+.cursor-hover {
+  width: 58px !important;
+  height: 58px !important;
+
+  background: rgba(124, 58, 237, 0.08);
+  border-color: #c084fc;
+}
+
+/* * { cursor: none; }
 
 .cursor-ring {
   position: fixed; width: 36px; height: 36px;
@@ -48,5 +104,5 @@ body {
   background: #c8f135; border-radius: 50%;
   pointer-events: none; z-index: 10000;
   transform: translate(-50%, -50%);
-}
+} */
 

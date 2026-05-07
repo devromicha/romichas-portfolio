@@ -115,7 +115,7 @@ export default function Skills() {
             <button
               key={cat.id}
               onClick={() => setActive(cat.id)}
-              className={`px-6 py-3 w-full md:w-auto rounded-2xl border flex  transition-all duration-300 backdrop-blur-xl
+              className={`px-6 py-3 w-full md:w-auto rounded-2xl border flex cursor-pointer  transition-all duration-300 backdrop-blur-xl
               ${
                 active === cat.id
                   ? 'bg-[#7c3aed] text-white border-transparent shadow-[0_0_30px_rgba(124,58,237,0.35)]'

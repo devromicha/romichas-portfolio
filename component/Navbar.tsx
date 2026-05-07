@@ -81,17 +81,53 @@ export default function Navbar() {
           ${
             scrolled
               ? 'top-4 w-[90%] max-w-7xl px-6 h-[56px] rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(124,58,237,0.08)]'
-              : 'top-0 max-w-[1500px] mx-auto w-full h-[68px] bg-transparent border-b border-transparent'
+              : 'top-0 max-w-[1400px] mx-auto w-full h-[68px] bg-transparent border-b border-transparent'
           }
         `}
       >
         {/* Logo */}
-        <button onClick={() => scrollTo('home')} className="flex items-center gap-0">
-          <span className="font-syne text-2xl font-italic font-extrabold tracking-tight bg-gradient-to-r from-[#7c3aed] via-[#9f67ff] to-[#7c3aed] bg-clip-text text-transparent">
-            Romicha
-          </span>
-          <span className="font-syne text-xl font-extrabold text-[#7c3aed]">.</span>
-        </button>
+
+  <button
+    onClick={() => scrollTo('home')}
+    className="group flex items-center gap-1 select-none"
+  >
+    {/* Opening bracket */}
+    <span
+      className="
+        font-mono text-2xl font-bold text-[#7c3aed]/60
+        group-hover:text-[#7c3aed]
+        transition-all duration-300
+        group-hover:-translate-x-[2px]
+      "
+    >
+      &lt;
+    </span>
+
+    {/* Name */}
+    <span
+      className="
+        font-syne text-2xl font-extrabold tracking-tight
+        bg-gradient-to-r from-white via-[#c084fc] to-[#7c3aed]
+        bg-clip-text text-transparent
+        transition-all duration-300
+        group-hover:from-[#c084fc] group-hover:via-white group-hover:to-[#9f67ff]
+      "
+    >
+      Romicha
+    </span>
+
+    {/* Closing bracket */}
+    <span
+      className="
+        font-mono text-2xl font-bold text-[#7c3aed]/60
+        group-hover:text-[#7c3aed]
+        transition-all duration-300
+        group-hover:translate-x-[2px]
+      "
+    >
+      /&gt;
+    </span>
+  </button>
 
         {/* Desktop Nav */}
         <ul className="hidden md:flex gap-4 list-none">
@@ -102,7 +138,7 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollTo(item.toLowerCase())}
                   className={`
-                    relative text-sm sm:text-base font-medium tracking-wide transition-all duration-300
+                    relative text-sm sm:text-base font-medium tracking-wide cursor-pointer transition-all duration-300
                     ${isActive ? 'text-[#7c3aed]' : 'text-white/50 hover:text-white/90'}
                   `}
                 >

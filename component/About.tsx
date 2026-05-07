@@ -108,7 +108,7 @@ export default function About() {
             <p className="text-white/50 text-sm md:text-base leading-[1.9] font-light">
               My expertise lies in building{' '}
               <span className="text-[#7c3aed]/80">responsive, pixel-perfect interfaces</span>{' '}
-              with React & Next.js, and robust server-side logic with Node.js &
+              with React & Next.js, Typescript and robust server-side logic with Node.js  &
               MongoDB. I&apos;m particularly passionate about clean code, bold design,
               and creating digital experiences that are not just functional — but
               truly <span className="text-[#7c3aed]/80">memorable</span>.
@@ -130,7 +130,7 @@ export default function About() {
             <div className="mt-4">
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group flex items-center gap-3 text-sm font-syne font-bold text-[#7c3aed] tracking-widest uppercase hover:gap-5 transition-all duration-300"
+                className="group flex items-center gap-3 text-sm font-syne font-bold cursor-pointer text-[#7c3aed] tracking-widest uppercase hover:gap-5 transition-all duration-300"
               >
                 Let&apos;s Work Together
                 <span className="flex items-center justify-center w-8 h-8 rounded-full border border-[#7c3aed]/40 group-hover:border-[#7c3aed] group-hover:bg-[#7c3aed]/10 transition-all duration-300">
