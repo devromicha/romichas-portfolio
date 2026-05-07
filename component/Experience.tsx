@@ -37,8 +37,8 @@ export default function Experience() {
       <div className="relative z-10 px-4">
 
         {/* Header */}
-        <div className="text-center mb-20">
-          <p className="text-white/40 text-xs tracking-[0.35em] uppercase">
+        <div data-aos="fade-down" className="text-center mb-20">
+          <p className="text-[#7c3aed]/90 text-xs tracking-[0.35em] uppercase">
             Experience
           </p>
           <h2 className="text-4xl md:text-5xl font-semibold text-white mt-3">
@@ -55,7 +55,8 @@ export default function Experience() {
               <div className="absolute -left-[40px] top-2 w-4 h-4 rounded-full bg-[#7c3aed] shadow-[0_0_20px_rgba(124,58,237,0.6)] ring-4 ring-[#7c3aed]/15" />
 
               {/* card */}
-              <div className="group relative p-7 rounded-2xl  border border-white/20 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/[0.03]">
+              <div  data-aos={i % 2 === 0 ? 'fade-right' : 'fade-left'}
+      data-aos-delay={i * 120} className="group relative p-7 rounded-2xl  border border-white/20 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/[0.03]">
 
                 {/* top glow line */}
                 <div className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#7c3aed] to-[#c8f135] transition-all duration-500" />

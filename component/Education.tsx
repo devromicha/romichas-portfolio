@@ -46,7 +46,7 @@ export default function Education() {
       <div className="relative z-10">
 
         {/* ── Header ── */}
-        <div className="flex flex-col items-center mb-20">
+        <div data-aos="fade-down" className="flex flex-col items-center mb-20">
           <span className="text-[11px] font-mono tracking-[0.4em] text-[#7c3aed]/70 uppercase mb-3">
             Academic Background
           </span>
@@ -71,7 +71,8 @@ export default function Education() {
               <div className="absolute -left-[41px] top-6 w-4 h-4 rounded-full bg-[#7c3aed] shadow-[0_0_14px_rgba(124,58,237,0.7)] ring-4 ring-[#7c3aed]/15" />
 
               {/* Card */}
-              <div className="group p-7 rounded-2xl border border-white/6 bg-white/[0.02] hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/[0.03] transition-all duration-300 relative overflow-hidden">
+              <div  data-aos={i % 2 === 0 ? 'fade-left' : 'fade-right'}
+      data-aos-delay={i * 120} className="group p-7 rounded-2xl border border-white/20 bg-white/[0.02] hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/[0.03] transition-all duration-300 relative overflow-hidden">
 
                 {/* Shimmer line top */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#7c3aed] to-[#c8f135] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />

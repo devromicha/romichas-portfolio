@@ -1,6 +1,8 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const roles = ['Frontend Developer.', 'MERN Stack Developer.']
 
@@ -36,8 +38,15 @@ export default function Hero() {
     return () => clearInterval(interval)
   }, [])
 
+  useEffect(() => {
+  AOS.init({
+    duration: 800,
+    once: true,
+  })
+}, [])
+
   return (
-    <section id="home" className="relative py-9 lg:py-25 flex items-center overflow-hidden">
+    <section id="home" className="relative  py-9 lg:py-25 flex items-center overflow-hidden">
 
       {/* Dot grid */}
       <div
@@ -51,7 +60,7 @@ export default function Hero() {
       <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-between gap-14 pt-24 pb-16">
 
         {/* LEFT: Text */}
-        <div className="flex-1 flex flex-col items-start">
+        <div data-aos="fade-right" className="flex-1 flex flex-col items-start">
 
           <p className="text-white/40 text-sm md:text-base font-mono tracking-[0.3em] uppercase mb-4 animate-fade-in" style={{ animationDelay: '0.1s' }}>
             Hello, I&apos;m
@@ -137,7 +146,7 @@ export default function Hero() {
         </div>
 
         {/* RIGHT: Profile Photo */}
-        <div className="flex-shrink-0 animate-fade-in" style={{ animationDelay: '0.25s' }}>
+        <div data-aos='fade-left' className="flex-shrink-0 animate-fade-in" style={{ animationDelay: '0.25s' }}>
           <div className="relative w-[260px] h-[260px] md:w-[340px] md:h-[340px] xl:h-[440px] xl:w-[440px]">
 
             {/* Outer gradient ring */}

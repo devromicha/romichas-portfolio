@@ -1,6 +1,7 @@
 'use client'
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
+import { a } from 'framer-motion/client'
 
 const SERVICE_ID  = 'service_myuxezl'
 const TEMPLATE_ID = 'template_pyehgh9'
@@ -18,16 +19,6 @@ const contactInfo = [
     value: 'romicha617@gmail.com',
     href: 'mailto:romicha617@gmail.com',
   },
-//   {
-//     icon: (
-//       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-//         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 12 19.79 19.79 0 0 1 1 3.18 2 2 0 0 1 2.99 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 5.99 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/>
-//       </svg>
-//     ),
-//     label: 'Phone',
-//     value: '+880 1XXX-XXXXXX',
-//     href: 'tel:+8801XXXXXXXXX',
-//   },
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -65,10 +56,8 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!form.from_name || !form.from_email || !form.message) return
-
     setSending(true)
     setError(false)
-
     try {
       await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current!, PUBLIC_KEY)
       setSent(true)
@@ -84,64 +73,61 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative  overflow-hidden">
+    <section id="contact" className="relative overflow-hidden">
+      <div className="relative mb-12 z-10">
 
-     
-
-      <div className="relative z-10 ">
-
-        {/* ── Header ── */}
-        <div className="flex flex-col items-center mb-20">
-          <span className="text-[11px] font-mono tracking-[0.4em] text-[#c8f135]/60 uppercase mb-3">
+        {/* Header */}
+        <div data-aos="fade-down" className="flex flex-col items-center mb-20">
+          <span className="text-[11px] font-mono tracking-[0.4em] text-[#7c3aed]/70 uppercase mb-3">
             Get In Touch
           </span>
           <h2 className="font-syne text-4xl md:text-5xl font-extrabold text-white mb-4">
-            Contact <span className="text-[#c8f135]">Me</span>
+            Contact <span className="text-[#7c3aed]">Me</span>
           </h2>
           <div className="flex items-center gap-3">
-            <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#c8f135]/60" />
-            <div className="w-2 h-2 rounded-full bg-[#c8f135]" />
-            <div className="w-24 h-[1px] bg-[#c8f135]/40" />
-            <div className="w-2 h-2 rounded-full border border-[#7c3aed]" />
-            <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#7c3aed]/60" />
+            <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#7c3aed]/60" />
+            <div className="w-2 h-2 rounded-full bg-[#7c3aed]" />
+            <div className="w-24 h-[1px] bg-[#7c3aed]/40" />
+            <div className="w-2 h-2 rounded-full border border-[#9f67ff]" />
+            <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#9f67ff]/60" />
           </div>
           <p className="text-white/35 text-sm font-mono text-center mt-5 max-w-md leading-relaxed">
             Have a project in mind or want to collaborate? Feel free to reach out — I&apos;m always open to new opportunities.
           </p>
         </div>
 
-        {/* ── Two Column Layout ── */}
+        {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
 
-          {/* ── LEFT: Info Cards ── */}
-          <div className="lg:col-span-2 flex flex-col gap-5">
+          {/* LEFT: Info Cards */}
+          <div data-aos='fade-left' className="lg:col-span-2 flex flex-col gap-5">
 
             {/* Available badge */}
-            <div className="flex items-center gap-3 p-4 rounded-2xl border border-[#c8f135]/20 bg-[#c8f135]/5">
-              <span className="w-3 h-3 rounded-full bg-[#c8f135] animate-pulse shadow-[0_0_10px_rgba(200,241,53,0.6)]" />
+            <div className="flex items-center gap-3 p-4 rounded-2xl border border-[#7c3aed]/20 bg-[#7c3aed]/5">
+              <span className="w-3 h-3 rounded-full bg-[#7c3aed] animate-pulse shadow-[0_0_10px_rgba(124,58,237,0.6)]" />
               <div>
-                <p className="text-[#c8f135] font-syne font-bold text-sm">Available for work</p>
+                <p className="text-[#7c3aed] font-syne font-bold text-sm">Available for work</p>
                 <p className="text-white/35 text-xs font-mono">Open to freelance & full-time roles</p>
               </div>
             </div>
 
             {/* Contact info cards */}
             {contactInfo.map((info) => (
-              <a
+              <a 
                 key={info.label}
                 href={info.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-4 rounded-2xl border border-white/6 bg-white/[0.02] hover:border-[#c8f135]/25 hover:bg-[#c8f135]/[0.03] transition-all duration-300"
+                className="group flex items-center gap-4 p-4 rounded-2xl border border-white/20 bg-white/[0.02] hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/[0.03] transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#c8f135]/10 border border-[#c8f135]/20 flex items-center justify-center text-[#c8f135] group-hover:bg-[#c8f135]/20 transition-all duration-300 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-[#7c3aed]/10 border border-[#7c3aed]/20 flex items-center justify-center text-[#7c3aed] group-hover:bg-[#7c3aed]/20 transition-all duration-300 shrink-0">
                   {info.icon}
                 </div>
                 <div className="min-w-0">
                   <p className="text-white/30 text-[10px] font-mono tracking-widest uppercase mb-0.5">{info.label}</p>
                   <p className="text-white/70 text-sm font-mono group-hover:text-white transition-colors duration-300 truncate">{info.value}</p>
                 </div>
-                <svg className="ml-auto shrink-0 text-white/20 group-hover:text-[#c8f135] transition-colors duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="ml-auto shrink-0 text-white/20 group-hover:text-[#7c3aed] transition-colors duration-300" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"/>
                   <polyline points="12 5 19 12 12 19"/>
                 </svg>
@@ -149,12 +135,12 @@ export default function Contact() {
             ))}
           </div>
 
-          {/* ── RIGHT: Contact Form ── */}
-          <div className="lg:col-span-3">
-            <div className="p-8 rounded-2xl border border-white/6 bg-white/[0.02] relative overflow-hidden">
+          {/* RIGHT: Contact Form */}
+          <div data-aos='fade-right' className="lg:col-span-3">
+            <div className="p-8 rounded-2xl border border-white/20 bg-white/[0.02] relative overflow-hidden">
 
               {/* Top gradient line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#c8f135] to-[#7c3aed]" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#7c3aed] to-[#9f67ff]" />
 
               <h3 className="font-syne font-bold text-white text-lg mb-6">Send a Message</h3>
 
@@ -164,30 +150,22 @@ export default function Contact() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[11px] font-mono text-white/40 tracking-widest uppercase">
-                      Your Name <span className="text-[#c8f135]">*</span>
+                      Your Name <span className="text-[#7c3aed]">*</span>
                     </label>
                     <input
-                      type="text"
-                      name="from_name"
-                      value={form.from_name}
-                      onChange={handleChange}
-                      required
+                      type="text" name="from_name" value={form.from_name} onChange={handleChange} required
                       placeholder="Enter Your name"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#c8f135]/40 focus:bg-[#c8f135]/[0.03] transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#7c3aed]/40 focus:bg-[#7c3aed]/[0.03] transition-all duration-300"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[11px] font-mono text-white/40 tracking-widest uppercase">
-                      Email Address <span className="text-[#c8f135]">*</span>
+                      Email Address <span className="text-[#7c3aed]">*</span>
                     </label>
                     <input
-                      type="email"
-                      name="from_email"
-                      value={form.from_email}
-                      onChange={handleChange}
-                      required
+                      type="email" name="from_email" value={form.from_email} onChange={handleChange} required
                       placeholder="Enter your email"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#c8f135]/40 focus:bg-[#c8f135]/[0.03] transition-all duration-300"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#7c3aed]/40 focus:bg-[#7c3aed]/[0.03] transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -196,32 +174,25 @@ export default function Contact() {
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[11px] font-mono text-white/40 tracking-widest uppercase">Subject</label>
                   <input
-                    type="text"
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
+                    type="text" name="subject" value={form.subject} onChange={handleChange}
                     placeholder="Project Collaboration / Job Opportunity..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#c8f135]/40 focus:bg-[#c8f135]/[0.03] transition-all duration-300"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#7c3aed]/40 focus:bg-[#7c3aed]/[0.03] transition-all duration-300"
                   />
                 </div>
 
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
                   <label className="text-[11px] font-mono text-white/40 tracking-widest uppercase">
-                    Message <span className="text-[#c8f135]">*</span>
+                    Message <span className="text-[#7c3aed]">*</span>
                   </label>
                   <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    required
-                    rows={5}
+                    name="message" value={form.message} onChange={handleChange} required rows={5}
                     placeholder="Tell me about your project or idea..."
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#c8f135]/40 focus:bg-[#c8f135]/[0.03] transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/8 text-white/80 text-sm font-mono placeholder-white/20 focus:outline-none focus:border-[#7c3aed]/40 focus:bg-[#7c3aed]/[0.03] transition-all duration-300 resize-none"
                   />
                 </div>
 
-                {/* Error message */}
+                {/* Error */}
                 {error && (
                   <div className="flex items-center gap-2 px-4 py-3 rounded-xl border border-red-500/30 bg-red-500/10 text-red-400 text-sm font-mono">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -231,7 +202,7 @@ export default function Contact() {
                   </div>
                 )}
 
-                {/* Submit button */}
+                {/* Submit */}
                 <button
                   type="submit"
                   disabled={sending || sent}
@@ -239,10 +210,10 @@ export default function Contact() {
                     w-full py-3.5 rounded-xl font-syne font-bold text-sm tracking-widest uppercase
                     flex items-center justify-center gap-2 transition-all duration-300
                     ${sent
-                      ? 'bg-[#c8f135]/15 border border-[#c8f135]/40 text-[#c8f135] cursor-default'
+                      ? 'bg-[#7c3aed]/15 border border-[#7c3aed]/40 text-[#7c3aed] cursor-default'
                       : error
                       ? 'bg-red-500/20 border border-red-500/30 text-red-400 cursor-default'
-                      : 'bg-gradient-to-r from-[#c8f135] to-[#a3e635] text-black hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,241,53,0.3)] disabled:opacity-70 disabled:cursor-not-allowed'
+                      : 'bg-gradient-to-r from-[#7c3aed] to-[#9f67ff] text-white hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(124,58,237,0.3)] disabled:opacity-70 disabled:cursor-not-allowed'
                     }
                   `}
                 >

@@ -13,7 +13,6 @@ export default function Navbar() {
   const mouse = useRef({ x: -100, y: -100 })
   const pos = useRef({ x: -100, y: -100 })
 
-  // 🎯 Cursor
   useEffect(() => {
     const move = (e: MouseEvent) => {
       mouse.current = { x: e.clientX, y: e.clientY }
@@ -41,14 +40,12 @@ export default function Navbar() {
     }
   }, [])
 
-  // 📜 Scroll detect
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // 🎯 Scroll active section
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => {
@@ -72,7 +69,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Cursor */}
       <div ref={ringRef} className="cursor-ring" />
       <div ref={dotRef} className="cursor-dot" />
 
@@ -80,26 +76,25 @@ export default function Navbar() {
       <nav
         className={`
           fixed z-50 flex items-center justify-between
-          transition-all duration-500 ease-in-out  w-[90%] max-w-7xl mx-auto
+          left-1/2 -translate-x-1/2
+          transition-all duration-500 ease-in-out 
           ${
             scrolled
-              ? 'top-4 left-1/2 -translate-x-1/2 px-6 h-[56px] rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(200,241,53,0.08)]'
-              : 'top-0 left-0 right-0 w-full px-6 md:px-10 h-[68px] bg-transparent border-b border-transparent'
+              ? 'top-4 w-[90%] max-w-7xl px-6 h-[56px] rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(124,58,237,0.08)]'
+              : 'top-0 max-w-[1500px] mx-auto w-full h-[68px] bg-transparent border-b border-transparent'
           }
         `}
       >
         {/* Logo */}
         <button onClick={() => scrollTo('home')} className="flex items-center gap-0">
-      <span className="font-syne text-xl font-extrabold tracking-tight 
-bg-gradient-to-r from-[#c8f135] via-green-400 to-[#00e5ff] 
-bg-clip-text text-transparent">
-  Romicha
-</span>
-          <span className="font-syne text-xl font-extrabold text-[#c8f135]">.</span>
+          <span className="font-syne text-2xl font-italic font-extrabold tracking-tight bg-gradient-to-r from-[#7c3aed] via-[#9f67ff] to-[#7c3aed] bg-clip-text text-transparent">
+            Romicha
+          </span>
+          <span className="font-syne text-xl font-extrabold text-[#7c3aed]">.</span>
         </button>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-8 list-none">
+        <ul className="hidden md:flex gap-4 list-none">
           {navItems.map((item) => {
             const isActive = active === item.toLowerCase()
             return (
@@ -107,13 +102,13 @@ bg-clip-text text-transparent">
                 <button
                   onClick={() => scrollTo(item.toLowerCase())}
                   className={`
-                    relative text-sm font-medium tracking-wide transition-all duration-300
-                    ${isActive ? 'text-[#c8f135]' : 'text-white/50 hover:text-white/90'}
+                    relative text-sm sm:text-base font-medium tracking-wide transition-all duration-300
+                    ${isActive ? 'text-[#7c3aed]' : 'text-white/50 hover:text-white/90'}
                   `}
                 >
                   {item}
                   <span
-                    className={`absolute left-0 -bottom-1 h-[2px] bg-[#c8f135] rounded-full transition-all duration-300
+                    className={`absolute left-0 -bottom-1 h-[2px] bg-[#7c3aed] rounded-full transition-all duration-300
                     ${isActive ? 'w-full' : 'w-0'}`}
                   />
                 </button>
@@ -123,14 +118,14 @@ bg-clip-text text-transparent">
         </ul>
 
         {/* Hire Me Button */}
-       <button
-  onClick={() => scrollTo('contact')}
-  className="hidden md:block text-[0.7rem] font-syne font-bold tracking-widest uppercase px-5 py-2 rounded-full 
-  bg-gradient-to-r from-[#c8f135] to-[#00e5ff] text-black 
-  transition-all duration-300 hover:scale-105 hover:brightness-110"
->
-  Hire Me
-</button>
+        {/* <button
+          onClick={() => scrollTo('contact')}
+          className="hidden md:block text-[0.7rem] font-syne font-bold tracking-widest uppercase px-5 py-2 rounded-full
+          bg-gradient-to-r from-[#7c3aed] to-[#9f67ff] text-white
+          transition-all duration-300 hover:scale-105 hover:brightness-110"
+        >
+          Hire Me
+        </button> */}
 
         {/* Mobile toggle */}
         <button
@@ -141,7 +136,7 @@ bg-clip-text text-transparent">
         </button>
       </nav>
 
-      {/* 📱 Mobile Menu */}
+      {/* Mobile Menu */}
       <div
         className={`fixed z-40 left-1/2 -translate-x-1/2 bg-[#0e0e0e]/95 backdrop-blur-md border border-white/10 md:hidden transition-all duration-300 overflow-hidden
         ${scrolled ? 'top-[76px] w-[90%] max-w-3xl rounded-2xl' : 'top-[68px] w-full rounded-none'}
@@ -153,14 +148,14 @@ bg-clip-text text-transparent">
               key={item}
               onClick={() => scrollTo(item.toLowerCase())}
               className={`text-base font-medium transition-colors duration-200
-                ${active === item.toLowerCase() ? 'text-[#c8f135]' : 'text-white/50'}`}
+                ${active === item.toLowerCase() ? 'text-[#7c3aed]' : 'text-white/50'}`}
             >
               {item}
             </button>
           ))}
           <button
             onClick={() => scrollTo('contact')}
-            className="px-6 py-2 rounded-full bg-gradient-to-r from-[#c8f135] to-[#7c3aed] text-black font-bold text-sm"
+            className="px-6 py-2 rounded-full bg-gradient-to-r from-[#7c3aed] to-[#9f67ff] text-white font-bold text-sm"
           >
             Hire Me
           </button>

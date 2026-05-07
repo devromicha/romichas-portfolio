@@ -22,11 +22,11 @@ export default function About() {
         }}
       />
 
-      <div className="relative z-10">
+      <div data-aos='fade-zoom-out' className="relative z-10">
 
         {/* Header */}
-        <div className="flex flex-col items-center mb-20">
-          <span className="text-[11px] font-mono tracking-[0.4em] text-[#7c3aed]/70 uppercase mb-3">Get to know me</span>
+        <div data-aos="fade-down" className="flex flex-col items-center mb-20">
+          <span className="text-[11px] font-mono tracking-[0.4em] text-[#7c3aed]/90 uppercase mb-3">Get to know me</span>
           <h2 className="font-syne text-4xl md:text-5xl font-extrabold text-white mb-4">
             About <span className="text-[#7c3aed]">Me</span>
           </h2>
