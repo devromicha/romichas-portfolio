@@ -1,85 +1,203 @@
-'use client'
+'use client';
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
-interface StarParticle {
-  r: number
-  a: number
-  size: number
-  opacity: number
-  speed: number
+interface Star {
+  x: number;
+  y: number;
+  size: number;
+  speed: number;
+  opacity: number;
+  color: string;
 }
 
 export default function StarBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current!
-    const ctx = canvas.getContext('2d')!
-    let raf: number
-    let stars: StarParticle[] = []
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const init = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
 
-      const count = window.innerWidth < 768 ? 400 : 800
-      const maxR = Math.hypot(canvas.width, canvas.height) * 0.9
+    let animationFrameId: number;
+    let stars: Star[] = [];
+    
+    // Higher count for that rich "Mustafiz" portfolio look
+    const count = 450; 
 
-      stars = Array.from({ length: count }, () => ({
-        r: Math.random() * maxR,
-        a: Math.random() * Math.PI * 2,
-        size: Math.random() < 0.92
-          ? Math.random() * 0.6 + 0.15
-          : Math.random() * 2.0 + 1.6,
-        opacity: Math.random() * 0.6 + 0.25,
-        speed: (Math.random() * 0.00012 + 0.00004) *
-               (Math.random() < 0.5 ? 1 : -1),
-      }))
-    }
+    const colors = ['#ffffff', '#fff4e6', '#e6f2ff']; // White, slight yellow, slight blue
 
-    const loop = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = '#04060f'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
 
-      const cx = canvas.width / 2
-      const cy = canvas.height / 2
+    const createStars = () => {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        // We use a non-linear distribution so most stars are tiny (far away)
+        const depth = Math.pow(Math.random(), 3); 
+        
+        stars.push({
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          size: depth * 1.8 + 0.4, 
+          // Fast speed for the "warp" feel, but slow for the background stars
+          speed: depth * 0.7 + 0.02, 
+          opacity: depth * 0.8 + 0.1,
+          color: colors[Math.floor(Math.random() * colors.length)],
+        });
+      }
+    };
 
-      stars.forEach(s => {
-        s.a += s.speed
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      stars.forEach((star) => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        
+        // Add subtle glow to larger stars
+        if (star.size > 1.2) {
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = 'white';
+        } else {
+          ctx.shadowBlur = 0;
+        }
 
-        const x = cx + Math.cos(s.a) * s.r
-        const y = cy + Math.sin(s.a) * s.r
+        ctx.fillStyle = star.color;
+        ctx.globalAlpha = star.opacity;
+        ctx.fill();
 
-        ctx.beginPath()
-        ctx.arc(x, y, s.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255,255,255,${s.opacity})`
-        ctx.fill()
-      })
+        star.x += star.speed;
 
-      raf = requestAnimationFrame(loop)
-    }
+        // Loop back to start
+        if (star.x > canvas.width) {
+          star.x = -2;
+          star.y = Math.random() * canvas.height;
+        }
+      });
 
-    init()
-    loop()
+      animationFrameId = requestAnimationFrame(animate);
+    };
 
-    const onResize = () => init()
-    window.addEventListener('resize', onResize)
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    createStars();
+    animate();
 
     return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('resize', onResize)
-    }
-  }, [])
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none"
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 0, // Keeps it behind your text
+        pointerEvents: 'none',
+        background: 'transparent',
+      }}
     />
-  )
+  );
 }
+
+
+// 'use client'
+
+// import { useEffect, useRef } from 'react'
+
+// interface StarParticle {
+//   r: number
+//   a: number
+//   size: number
+//   opacity: number
+//   speed: number
+// }
+
+// export default function StarBackground() {
+//   const canvasRef = useRef<HTMLCanvasElement>(null)
+
+//   useEffect(() => {
+//     const canvas = canvasRef.current!
+//     const ctx = canvas.getContext('2d')!
+//     let raf: number
+//     let stars: StarParticle[] = []
+
+//     const init = () => {
+//       canvas.width = window.innerWidth
+//       canvas.height = window.innerHeight
+
+//       const count = window.innerWidth < 768 ? 400 : 800
+//       const maxR = Math.hypot(canvas.width, canvas.height) * 0.9
+
+//       stars = Array.from({ length: count }, () => ({
+//         r: Math.random() * maxR,
+//         a: Math.random() * Math.PI * 2,
+//    size: Math.random() < 0.6
+//   ? Math.random() * 1.5 + 0.8
+//   : Math.random() * 4 + 2,
+//         opacity: Math.random() * 0.6 + 0.25,
+//         speed: (Math.random() * 0.00012 + 0.00004) *
+//                (Math.random() < 0.5 ? 1 : -1),
+//       }))
+//     }
+
+//     const loop = () => {
+//       ctx.clearRect(0, 0, canvas.width, canvas.height)
+//       ctx.fillStyle = '#04060f'
+//       ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+//       const cx = canvas.width / 2
+//       const cy = canvas.height / 2
+
+//    stars.forEach(s => {
+//   s.a += s.speed
+
+//   const x = cx + Math.cos(s.a) * s.r
+//   const y = cy + Math.sin(s.a) * s.r
+
+//   const isMovingFast = Math.abs(s.speed) > 0.00015
+
+//   ctx.beginPath()
+//   ctx.arc(x, y, isMovingFast ? s.size * 2.5 : s.size, 0, Math.PI * 2)
+
+//   ctx.fillStyle = `rgba(255,255,255,${isMovingFast ? s.opacity + 0.3 : s.opacity})`
+
+//   ctx.shadowBlur = isMovingFast ? 12 : 4
+//   ctx.shadowColor = 'white'
+
+//   ctx.fill()
+// })
+
+//       raf = requestAnimationFrame(loop)
+//     }
+
+//     init()
+//     loop()
+
+//     const onResize = () => init()
+//     window.addEventListener('resize', onResize)
+
+//     return () => {
+//       cancelAnimationFrame(raf)
+//       window.removeEventListener('resize', onResize)
+//     }
+//   }, [])
+
+//   return (
+//     <canvas
+//       ref={canvasRef}
+//       className="fixed inset-0 z-0 pointer-events-none"
+//     />
+//   )
+// }
 
 
 

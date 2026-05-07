@@ -1,14 +1,12 @@
 'use client'
 
 const experiences = [
-
- {
+  {
     role: 'Frontend Developer',
     company: 'Softvence Omega',
     org: 'Betopia Group',
     duration: 'Oct 2025 — Present',
     type: 'Full-time',
-
     points: [
       'Developing pixel-perfect UI with React.js & Next.js',
       'Working closely with design and backend teams',
@@ -16,13 +14,12 @@ const experiences = [
       'Maintaining scalable and reusable component architecture',
     ],
   },
-    {
+  {
     role: 'Full Stack Developer (Industrial Attachment)',
     company: 'E-learning & Earning Ltd',
     org: 'Full Stack Training Program',
     duration: 'July 2024 — Oct 2024',
     type: 'Training / Internship',
-
     points: [
       'Building modern responsive web applications using React.js & Next.js',
       'Working with REST APIs for dynamic data handling',
@@ -33,92 +30,93 @@ const experiences = [
     ],
   },
 ]
+
 export default function Experience() {
   return (
-    <section id="experience" className="relative  overflow-hidden bg-[#050505]">
-
-    
-
-      <div className="relative z-10  px-4">
+    <section id="experience" className="relative overflow-hidden ">
+      <div className="relative z-10 px-4">
 
         {/* Header */}
         <div className="text-center mb-20">
           <p className="text-white/40 text-xs tracking-[0.35em] uppercase">
             Experience
           </p>
-
           <h2 className="text-4xl md:text-5xl font-semibold text-white mt-3">
-            Where I’ve <span className="text-[#c8f135]">Worked</span>
+            Where I&apos;ve <span className="text-[#7c3aed]">Worked</span>
           </h2>
         </div>
 
         {/* Timeline */}
-        <div className="relative border-l border-white/10 pl-8">
-
+        <div className="relative border-l border-[#7c3aed]/15 pl-8">
           {experiences.map((exp, i) => (
             <div key={i} className="relative mb-14 last:mb-0">
 
               {/* dot */}
-              <div className="absolute -left-[40px] top-2 w-4 h-4 rounded-full bg-[#c8f135] shadow-[0_0_20px_rgba(200,241,53,0.6)]" />
+              <div className="absolute -left-[40px] top-2 w-4 h-4 rounded-full bg-[#7c3aed] shadow-[0_0_20px_rgba(124,58,237,0.6)] ring-4 ring-[#7c3aed]/15" />
 
               {/* card */}
-              <div className="group relative p-7 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#c8f135]/30 hover:bg-white/[0.05]">
+              <div className="group relative p-7 rounded-2xl  border border-white/20 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/[0.03]">
 
                 {/* top glow line */}
-                <div className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#c8f135] to-[#7c3aed] transition-all duration-500" />
+                <div className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-[#7c3aed] to-[#c8f135] transition-all duration-500" />
 
                 {/* header */}
                 <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-6">
-
                   <div>
-                    <h3 className="text-xl font-semibold text-white group-hover:text-[#c8f135] transition">
+                    <h3 className="text-xl font-semibold text-white group-hover:text-[#7c3aed] transition">
                       {exp.role}
                     </h3>
-
-                    <p className="text-[#c8f135] text-sm font-mono">
+                    <p className="text-[#7c3aed] text-sm font-mono font-semibold">
                       {exp.company}
                     </p>
-
-                    <p className="text-white/30 text-xs">
+                    <p className="text-white/35 text-xs font-mono mt-0.5">
                       {exp.org}
                     </p>
                   </div>
 
-                  <div className="text-right">
-                    <span className="inline-block px-3 py-1 text-xs rounded-full border border-[#c8f135]/20 text-[#c8f135] bg-[#c8f135]/10">
+                  <div className="flex flex-col items-start sm:items-end gap-2">
+                    <span className="inline-block px-3 py-1 text-[11px] font-mono rounded-full border border-[#7c3aed]/30 text-[#7c3aed]/80 bg-[#7c3aed]/8 whitespace-nowrap">
                       {exp.type}
                     </span>
-
-                    <p className="text-white/30 text-xs mt-2 font-mono">
-                      {exp.duration}
-                    </p>
+                    <div className="flex items-center gap-1.5">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff40" strokeWidth="2">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                      <p className="text-white/35 text-xs font-mono whitespace-nowrap">
+                        {exp.duration}
+                      </p>
+                    </div>
                   </div>
-
                 </div>
+
+                {/* Divider */}
+                <div className="w-full h-[1px] bg-white/5 mb-5" />
 
                 {/* points */}
                 <ul className="space-y-3">
                   {exp.points.map((p, j) => (
-                    <li key={j} className="flex gap-3 text-white/60 text-sm leading-relaxed">
-                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#c8f135]" />
+                    <li key={j} className="flex gap-3 text-white/50 text-sm leading-relaxed">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#7c3aed]/70 shrink-0" />
                       {p}
                     </li>
                   ))}
                 </ul>
 
                 {/* status */}
-                <div className="mt-6 flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#c8f135] animate-pulse" />
-                  <span className="text-xs tracking-[0.25em] text-[#c8f135]/60 uppercase">
-                    Currently working
-                  </span>
-                </div>
+                {i === 0 && (
+                  <div className="mt-6 flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#7c3aed] animate-pulse" />
+                    <span className="text-xs tracking-[0.25em] text-[#7c3aed]/60 uppercase">
+                      Currently working
+                    </span>
+                  </div>
+                )}
 
               </div>
             </div>
           ))}
-
         </div>
+
       </div>
     </section>
   )

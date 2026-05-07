@@ -101,7 +101,9 @@ export default function Projects() {
   return (
     <section id="projects" className="relative  overflow-hidden">
 
-   
+      {/* Background glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#7c3aed]/7 blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#c8f135]/5 blur-[100px] pointer-events-none" />
 
       {/* Dot grid */}
       <div

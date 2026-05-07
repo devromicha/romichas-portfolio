@@ -3,34 +3,15 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
-  Code2,
-  Palette,
-  Monitor,
-
-  Server,
-  Globe,
-  Rocket,
-  Cpu,
-  Boxes,
-  Layers3,
-  Languages,
-  Flame,
+  Code2, Palette, Monitor, Server, Globe, Rocket, Cpu, Boxes, Layers3, Languages, Flame,
 } from 'lucide-react'
 
 import { BsBootstrapFill, BsGithub } from 'react-icons/bs'
 import { GrGithub } from 'react-icons/gr'
 import { FiFigma } from 'react-icons/fi'
-
 import {
-  SiExpress,
-  SiFirebase,
-  SiGraphql,
-  SiJavascript,
-  SiJsonwebtokens,
-  SiMongodb,
-  SiNetlify,
-  SiRedux,
-  SiShadcnui,
+  SiExpress, SiFirebase, SiGraphql, SiJavascript, SiJsonwebtokens,
+  SiMongodb, SiNetlify, SiRedux, SiShadcnui,
 } from 'react-icons/si'
 
 const categories = [
@@ -92,32 +73,26 @@ const categories = [
 ]
 
 const levelColor: Record<string, string> = {
-  Advanced: 'text-[#c8f135] border-[#c8f135]/20 bg-[#c8f135]/10',
-  Intermediate: 'text-[#7c3aed] border-[#7c3aed]/20 bg-[#7c3aed]/10',
+  Advanced: 'text-[#7c3aed] border-[#7c3aed]/20 bg-[#7c3aed]/10',
+  Intermediate: 'text-[#7c3aed]/60 border-[#7c3aed]/15 bg-[#7c3aed]/8',
 }
 
 export default function Skills() {
   const [active, setActive] = useState('frontend')
-
   const current = categories.find((c) => c.id === active)!
 
   return (
-    <section id="skills" className="relative overflow-hidden ">
-
-     
-
+    <section id="skills" className="relative overflow-hidden">
       <div className="relative z-10 px-5">
 
         {/* Header */}
         <div className="flex flex-col items-center mb-16">
-          <span className="text-[11px] font-mono tracking-[0.4em] text-[#c8f135]/60 uppercase mb-3">
+          <span className="text-[11px] font-mono tracking-[0.4em] text-[#7c3aed]/70 uppercase mb-3">
             What I work with
           </span>
-
           <h2 className="font-syne text-4xl md:text-5xl font-extrabold text-white mb-4">
-            My <span className="text-[#c8f135]">Skills</span>
+            My <span className="text-[#7c3aed]">Skills</span>
           </h2>
-
           <p className="text-white/40 text-sm md:text-base text-center max-w-xl">
             Crafting modern and scalable web applications with clean UI, smooth experience, and powerful backend solutions.
           </p>
@@ -132,8 +107,8 @@ export default function Skills() {
               className={`flex items-center gap-2 px-6 py-3 rounded-2xl font-semibold transition-all duration-300 backdrop-blur-xl border
               ${
                 active === cat.id
-                  ? 'bg-gradient-to-r from-[#c8f135] to-[#a3e635] text-black border-transparent shadow-[0_0_35px_rgba(200,241,53,0.45)]'
-                  : 'bg-white/[0.04] border-white/10 text-white/70 hover:border-[#c8f135]/30 hover:shadow-[0_0_25px_rgba(200,241,53,0.1)]'
+                  ? 'bg-gradient-to-r from-[#7c3aed] to-[#9f67ff] text-white border-transparent shadow-[0_0_35px_rgba(124,58,237,0.45)]'
+                  : 'bg-white/[0.04] border-white/10 text-white/70 hover:border-[#7c3aed]/30 hover:shadow-[0_0_25px_rgba(124,58,237,0.1)]'
               }`}
             >
               {cat.icon}
@@ -144,7 +119,6 @@ export default function Skills() {
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
           {current.skills.map((skill, i) => (
             <motion.div
               key={skill.name}
@@ -153,37 +127,34 @@ export default function Skills() {
               transition={{ delay: i * 0.05 }}
               whileHover={{ scale: 1.05 }}
               className="
-              group relative overflow-hidden
-              rounded-3xl border border-white/10
-              bg-white/[0.03] backdrop-blur-xl
-              p-6 transition-all duration-300
-              hover:border-[#c8f135]/30
-              hover:shadow-[0_0_40px_rgba(200,241,53,0.15)]
+                group relative overflow-hidden
+                rounded-3xl border border-white/6
+                bg-white/[0.02] backdrop-blur-xl
+                p-6 transition-all duration-300
+                hover:border-[#7c3aed]/25
+                hover:shadow-[0_0_40px_rgba(124,58,237,0.15)]
               "
             >
-
               {/* Glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-[#c8f135]/10 to-[#7c3aed]/10 transition" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-[#7c3aed]/10 to-[#9f67ff]/10 transition" />
 
               {/* Top */}
               <div className="relative z-10 flex justify-between mb-6">
-                <div className="text-[#c8f135] group-hover:scale-110 transition">
+                <div className="text-[#7c3aed] group-hover:scale-110 transition">
                   {skill.icon}
                 </div>
-
-                <span className={`text-[10px] px-2 py-1 rounded-full border ${levelColor[skill.level]}`}>
+                <span className={`text-[10px] px-2 py-1 rounded-full border text-[#9f67ff]`}>
                   {skill.level}
                 </span>
               </div>
 
               {/* Name */}
-              <h3 className="relative z-10 font-bold text-white group-hover:text-[#c8f135] transition">
+              <h3 className="relative z-10 font-bold text-white group-hover:text-[#7c3aed] transition">
                 {skill.name}
               </h3>
 
             </motion.div>
           ))}
-
         </div>
 
         {/* Footer */}
