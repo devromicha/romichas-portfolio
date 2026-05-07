@@ -13,7 +13,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-32  overflow-hidden"
+      className="relative  overflow-hidden"
     >
   
 
@@ -26,7 +26,7 @@ export default function About() {
         }}
       />
 
-      <div className="relative z-10  px-8 md:px-16">
+      <div className="relative z-10 ">
 
         {/* ── Section Header ── */}
         <div className="flex flex-col items-center mb-20">

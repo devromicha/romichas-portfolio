@@ -41,7 +41,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative  flex items-center overflow-hidden"
     >
      
       {/* Dot grid */}
@@ -54,7 +54,7 @@ export default function Hero() {
       />
 
       {/* ── Main Layout ── */}
-      <div className="relative z-10 w-full px-8 md:px-16 flex flex-col-reverse md:flex-row items-center justify-between gap-14 pt-24 pb-16">
+      <div className="relative z-10 w-full  flex flex-col md:flex-row items-center justify-between gap-14 pt-24 pb-16">
 
         {/* ── LEFT: Text ── */}
         <div className="flex-1 flex flex-col items-start">
@@ -146,7 +146,7 @@ bg-clip-text text-transparent tracking-tight leading-none mb-5 animate-fade-in" 
 
         {/* ── RIGHT: Profile Photo ── */}
         <div className="flex-shrink-0 animate-fade-in" style={{ animationDelay: '0.25s' }}>
-          <div className="relative w-[260px] h-[260px] md:w-[340px] md:h-[340px]">
+          <div className="relative w-[260px] h-[260px] md:w-[340px] md:h-[340px] xl:h-[440px] xl:w-[440px]">
 
             {/* Outer gradient ring */}
             <div className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-r from-[#c8f135] via-green-400 to-[#00e5ff]">
@@ -160,7 +160,7 @@ bg-clip-text text-transparent tracking-tight leading-none mb-5 animate-fade-in" 
             <div className="absolute inset-[4px] rounded-full overflow-hidden bg-[#161616] flex items-center justify-center group">
               
                
-                <Image src="/romicha.png" alt="Romicha" fill     className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl"/>
+                <Image src="/romicha.png" alt="Romicha" fill  className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-2xl"/>
              
               <div className="w-full h-full bg-gradient-to-br from-[#1c1c1c] to-[#111] flex items-center justify-center">
                 <span className="text-white/15 text-xs font-mono tracking-widest">YOUR PHOTO</span>

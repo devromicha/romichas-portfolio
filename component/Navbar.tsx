@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 
-const navItems = ['Home', 'About', 'Skills', 'Projects', 'Contact']
+const navItems = ['Home', 'About', 'Skills', 'Experience', 'Education', 'Projects', 'Contact']
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)

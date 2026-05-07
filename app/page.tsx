@@ -1,6 +1,9 @@
 import About from "@/component/About";
+import Education from "@/component/Education";
+import Experience from "@/component/Experience";
 import Hero from "@/component/Hero";
 import Navbar from "@/component/Navbar";
+import Projects from "@/component/Projects";
 import Skills from "@/component/Skills";
 
 
@@ -18,6 +21,9 @@ export default function Home() {
         <Hero />
         <About />
         <Skills/>
+        <Experience/>
+        <Education/>
+        <Projects/>
       
       </div>
 
