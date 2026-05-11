@@ -6,6 +6,9 @@ import 'aos/dist/aos.css'
 
 import {
   Code2, Palette, Monitor, Server, Globe, Rocket, Cpu, Boxes, Layers3, Languages, Flame,
+  FileJson,
+  Sparkles,
+  Move,
 } from 'lucide-react'
 
 import { BsBootstrapFill } from 'react-icons/bs'
@@ -13,7 +16,8 @@ import { GrGithub } from 'react-icons/gr'
 import { FiFigma } from 'react-icons/fi'
 import {
   SiExpress, SiFirebase, SiGraphql, SiJavascript, SiJsonwebtokens,
-  SiMongodb, SiNetlify, SiRedux, SiShadcnui,
+  SiMaildotru,
+  SiMongodb, SiNetlify, SiReactquery, SiRedux, SiShadcnui,
 } from 'react-icons/si'
 
 const categories = [
@@ -24,7 +28,7 @@ const categories = [
     skills: [
       { name: 'React', level: 'Advanced', icon: <Code2 size={26} /> },
       { name: 'Next.js', level: 'Advanced', icon: <Rocket size={26} /> },
-      { name: 'TypeScript', level: 'Intermediate', icon: <Cpu size={26} /> },
+      { name: 'TypeScript', level: 'Advanced', icon: <Cpu size={26} /> },
       { name: 'JavaScript', level: 'Advanced', icon: <SiJavascript size={26} /> },
       { name: 'Tailwind CSS', level: 'Advanced', icon: <Palette size={26} /> },
       { name: 'Bootstrap 5', level: 'Advanced', icon: <BsBootstrapFill size={26} /> },
@@ -53,7 +57,8 @@ const categories = [
     skills: [
       { name: 'Redux', level: 'Intermediate', icon: <SiRedux size={26} /> },
       { name: 'Context API', level: 'Advanced', icon: <Flame size={26} /> },
-      { name: 'i18next', level: 'Intermediate', icon: <Languages size={26} /> },
+      { name: 'React Query', level: 'Intermediate', icon: <SiReactquery size={26} /> },
+      { name: 'i18next', level: 'Advanced', icon: <Languages size={26} /> },
       { name: 'shadcn/ui', level: 'Advanced', icon: <SiShadcnui size={26} /> },
     ],
   },
@@ -65,9 +70,13 @@ const categories = [
       { name: 'Git', level: 'Advanced', icon: <GrGithub size={26} /> },
       { name: 'Figma', level: 'Advanced', icon: <FiFigma size={26} /> },
       { name: 'VS Code', level: 'Advanced', icon: <Monitor size={26} /> },
+      { name: 'EmailJS', level: 'Intermediate', icon: <SiMaildotru size={26} /> },
       { name: 'Postman', level: 'Intermediate', icon: <Boxes size={26} /> },
+      { name: 'Swagger', level: 'Intermediate', icon: <FileJson size={26} /> },
       { name: 'Vercel', level: 'Advanced', icon: <Rocket size={26} /> },
       { name: 'Netlify', level: 'Advanced', icon: <SiNetlify size={26} /> },
+      { name: 'AOS', level: 'Intermediate', icon: <Sparkles size={26} /> },
+{ name: 'Framer Motion', level: 'Intermediate', icon: <Move size={26} /> },
     ],
   },
 ]
@@ -104,7 +113,7 @@ export default function Skills() {
             My <span className="text-[#7c3aed]">Skills</span>
           </h2>
 
-          <p data-aos="fade-left" className="text-white/40 text-sm text-center max-w-xl">
+          <p data-aos="fade-left" className="text-white/60 text-sm text-center max-w-xl">
             Crafting modern and scalable web applications with clean UI, smooth experience, and powerful backend solutions.
           </p>
         </div>
@@ -171,7 +180,7 @@ export default function Skills() {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-white/20 text-xs mt-14 tracking-[0.3em] uppercase">
+        <p className="text-center text-white/40 text-xs mt-14 tracking-[0.3em] uppercase">
           Always learning · Always building
         </p>
 
