@@ -70,7 +70,7 @@ export default function Experience() {
                     <p className="text-[#7c3aed] text-sm font-mono font-semibold">
                       {exp.company}
                     </p>
-                    <p className="text-white/35 text-xs font-mono mt-0.5">
+                    <p className="text-white/60 text-xs font-mono mt-0.5">
                       {exp.org}
                     </p>
                   </div>
@@ -83,7 +83,7 @@ export default function Experience() {
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff40" strokeWidth="2">
                         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                       </svg>
-                      <p className="text-white/35 text-xs font-mono whitespace-nowrap">
+                      <p className="text-white/60 text-xs font-mono whitespace-nowrap">
                         {exp.duration}
                       </p>
                     </div>
